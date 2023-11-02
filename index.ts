@@ -1,4 +1,4 @@
-import DiscordJS, { Client, GatewayIntentBits } from 'discord.js'
+import DiscordJS, { Client, GatewayIntentBits, Message, TextChannel } from 'discord.js'
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -25,7 +25,7 @@ client.on('ready', () => {
         name: 'ping',
         description: 'Replies with pong.',
     })
-    commands?.create({
+    commands?.create({ 
         name: 'uwu-voice',
         description: 'Sends a link to an UWU translator'
     })
@@ -40,6 +40,22 @@ client.on('ready', () => {
     commands?.create({
         name: 'helpkfc',
         description: 'About KFC bot'
+    })
+    commands?.create({
+        name: 'image-test',
+        description: 'test for sending images'
+    })
+    commands?.create({
+        name: 'video-test',
+        description: 'test for sending videos'
+    })
+    commands?.create({
+        name: 'fortnite',
+        description: 'secret'
+    })
+    commands?.create({
+        name: '8ball',
+        description: 'random response'
     })
 })
 
@@ -87,7 +103,41 @@ client.on('interactionCreate', async (interaction) => {
         })
     }
     
+    if (commandName === 'image-test') {
+        interaction.reply({
+            content: '',
+            files: ['C:\\Users\\FiercePC\\Downloads\\sl_243115104_volkswagen-golf-2012-side-view_4x.png'],
+            ephemeral: false,
+        })
+    }
 
+    if (commandName === 'video-test') {
+        interaction.reply({
+            content: '',
+            files: ['C:\\Users\\FiercePC\\Downloads\\haas.mov'],
+            ephemeral: false,
+        })
+    }
+
+    if(commandName === 'fortnite') {
+        interaction.reply({
+            content: 'Hello petah.',
+            files: [{
+            attachment:'C:\\Users\\FiercePC\\Downloads\\Snapinsta.app_video_365501201_316707994048736_220244430177569592_n.mp4',
+            name: 'SPOILER_NAME.mp4'
+        }],
+            ephemeral: false,
+            
+        })
+    }
+
+    if(commandName === '8ball') {
+        interaction.reply({
+            content: 'ITS NOT FINISHED STOP STOP STOP STOP STOP STOP',
+            files: ['C:\\Users\\FiercePC\\Downloads\\RPReplay_Final1696355395.mov'],
+            ephemeral: false,
+        })
+    }
 })
 
 
@@ -95,6 +145,3 @@ client.on('interactionCreate', async (interaction) => {
 
 
 client.login(process.env.TOKEN)
-
-
-//SNOOZY IS SEXY FOR MAKE KFC
