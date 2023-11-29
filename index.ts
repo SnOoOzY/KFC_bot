@@ -137,11 +137,36 @@ client.on('interactionCreate', async (interaction) => {
             files: ['C:\\Users\\FiercePC\\Downloads\\RPReplay_Final1696355395.mov'],
             ephemeral: false,
 
-            let 8choice = math.random(9),
+            let 8choice = math.random(8),
 
             switch(8choice) {
                 case 0:
-                
+                    content: 'WE NUMBER 1!';
+                    break;
+                case 1:
+                    content: 'WE NUMBER 2!';
+                    break;
+                case 2:
+                    content: 'WE NUMBER 3!';
+                    break;
+                case 3:
+                    content: 'WE NUMBER 4!';
+                    break;
+                case 4:
+                    content: 'WE NUMBER 5!';
+                    break;
+                case 5:
+                    content: 'WE NUMBER 6!';
+                    break;
+                case 6:
+                    content: 'WE NUMBER 7!';
+                    break;
+                case 7:
+                    content: 'WE NUMBER 8!';
+                    break;
+                default: 
+                    content: 'WE NOT BALLING!';
+                break;
             }
         })
     }
