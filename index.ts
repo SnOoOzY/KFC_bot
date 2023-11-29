@@ -136,6 +136,13 @@ client.on('interactionCreate', async (interaction) => {
             content: 'ITS NOT FINISHED STOP STOP STOP STOP STOP STOP',
             files: ['C:\\Users\\FiercePC\\Downloads\\RPReplay_Final1696355395.mov'],
             ephemeral: false,
+
+            let 8choice = math.random(9),
+
+            switch(8choice) {
+                case 0:
+                
+            }
         })
     }
 })
