@@ -131,44 +131,25 @@ client.on('interactionCreate', async (interaction) => {
         })
     }
 
-    if(commandName === '8ball') {
+    if (commandName === '8ball') {
+        const responses = [
+          'WE NUMBER 1!',
+          'WE NUMBER 2!',
+          'WE NUMBER 3!',
+          'WE NUMBER 4!',
+          'WE NUMBER 5!',
+          'WE NUMBER 6!',
+          'WE NUMBER 7!',
+          'WE NUMBER 8!',
+        ];
+      
+        const randomIndex = Math.floor(Math.random() * responses.length);
+        const response = responses[randomIndex];
+      
         interaction.reply({
-            content: 'ITS NOT FINISHED STOP STOP STOP STOP STOP STOP',
-            files: ['C:\\Users\\FiercePC\\Downloads\\RPReplay_Final1696355395.mov'],
-            ephemeral: false,
-
-            let 8choice = math.random(8),
-
-            switch(8choice) {
-                case 0:
-                    content: 'WE NUMBER 1!';
-                    break;
-                case 1:
-                    content: 'WE NUMBER 2!';
-                    break;
-                case 2:
-                    content: 'WE NUMBER 3!';
-                    break;
-                case 3:
-                    content: 'WE NUMBER 4!';
-                    break;
-                case 4:
-                    content: 'WE NUMBER 5!';
-                    break;
-                case 5:
-                    content: 'WE NUMBER 6!';
-                    break;
-                case 6:
-                    content: 'WE NUMBER 7!';
-                    break;
-                case 7:
-                    content: 'WE NUMBER 8!';
-                    break;
-                default: 
-                    content: 'WE NOT BALLING!';
-                break;
-            }
-        })
+          content: response,
+          ephemeral: false,
+        });
     }
 })
 
@@ -177,3 +158,6 @@ client.on('interactionCreate', async (interaction) => {
 
 
 client.login(process.env.TOKEN)
+
+
+//SNOOZY IS SEXY FOR MAKE KFC
