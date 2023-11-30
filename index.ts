@@ -1,11 +1,13 @@
-import DiscordJS, { Client, GatewayIntentBits, Message, TextChannel } from 'discord.js'
+import DiscordJS, { ApplicationCommandType, Client, ClientUser, GatewayIntentBits, InteractionResponse, Message, MessageReaction, Options, TextChannel, TextChannelResolvable, channelMention, userMention } from 'discord.js'
 import dotenv from 'dotenv'
 dotenv.config()
 
 const client = new DiscordJS.Client({
     intents: [
         GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMessages
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.GuildMessageReactions,
+        GatewayIntentBits.MessageContent
     ]
 })
 
@@ -55,8 +57,9 @@ client.on('ready', () => {
     })
     commands?.create({
         name: '8ball',
-        description: 'random response'
-    })
+        description: 'Get a random response',
+        type: ApplicationCommandType.ChatInput
+      })
 })
 
 
@@ -131,7 +134,21 @@ client.on('interactionCreate', async (interaction) => {
         })
     }
 
+
     if (commandName === '8ball') {
+        try{
+
+        await interaction.reply('Ask me a question blud');
+
+        const userQuestion = options.get('question');
+
+        if (!userQuestion) {
+            await interaction.followUp({
+                content: "Please ask a question!",
+                ephemeral: false,
+            });
+        } else {
+
         const responses = [
           'WE NUMBER 1!',
           'WE NUMBER 2!',
@@ -142,16 +159,21 @@ client.on('interactionCreate', async (interaction) => {
           'WE NUMBER 7!',
           'WE NUMBER 8!',
         ];
-      
+
         const randomIndex = Math.floor(Math.random() * responses.length);
         const response = responses[randomIndex];
-      
-        interaction.reply({
-          content: response,
-          ephemeral: false,
+
+        await interaction.followUp({
+            content: `You asked: ${userQuestion}\n\n🎱 ${response}`,
+            ephemeral: false,
         });
     }
+} catch(error) {
+        console.error('Error processing 8ball command:', error)
+    }
+}
 })
+
 
 
 
