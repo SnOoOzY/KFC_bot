@@ -138,7 +138,7 @@ client.on('interactionCreate', async (interaction) => {
     if (commandName === '8ball') {
         try{
 
-        await interaction.reply('Ask me a question blud');
+        await interaction.reply('Ask me a question!');
 
         const userQuestion = options.get('question');
 
@@ -150,14 +150,14 @@ client.on('interactionCreate', async (interaction) => {
         } else {
 
         const responses = [
-          'WE NUMBER 1!',
-          'WE NUMBER 2!',
-          'WE NUMBER 3!',
-          'WE NUMBER 4!',
-          'WE NUMBER 5!',
-          'WE NUMBER 6!',
-          'WE NUMBER 7!',
-          'WE NUMBER 8!',
+          'Yes!',
+          'No!',
+          'Figure it out yourself idiot!',
+          'Are you stupid?!',
+          'I dont know',
+          'Are you mentally challenged?!',
+          'You are banned.',
+          'Nuh uh.',
         ];
 
         const randomIndex = Math.floor(Math.random() * responses.length);
