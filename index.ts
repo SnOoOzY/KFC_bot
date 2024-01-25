@@ -59,7 +59,11 @@ client.on('ready', () => {
         name: '8ball',
         description: 'Get a random response',
         type: ApplicationCommandType.ChatInput
-      })
+    })
+    commands?.create({
+        name: 'joke',
+        descrption: 'Tell a random joke'
+    })
 })
 
 
@@ -172,6 +176,13 @@ client.on('interactionCreate', async (interaction) => {
         console.error('Error processing 8ball command:', error)
     }
 }
+        if(commandName === 'jokes') {
+
+            const jokes = [
+                'What falls, but never needs a bandage? The rain.',
+                
+            ];
+    }
 })
 
 
