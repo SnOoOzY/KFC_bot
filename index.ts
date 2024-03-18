@@ -179,9 +179,27 @@ client.on('interactionCreate', async (interaction) => {
         if(commandName === 'jokes') {
 
             const jokes = [
-                'What falls, but never needs a bandage? The rain.',
-                
+                'Why did the chicken cross the road? Chicken butt.',
+                'I shit!',
+                'What do you call a shit that shitting? A shitter!',
+                'Jillian!!! :3',
+                'Knock knock. Whos there? The door.',
+                'Whats brown and sticky? Raphs mums pussy',
+                'What do you call two ducks and a cow? Quackers and milk.',
+                'Why did the whale blush? It saw the oceans bottom',
+                'Shut up!',
+                'What is Jack? A fucking retard',
+                'Why did gyatt.',
+                'How did gyatt grow? With skibidi.'
             ];
+
+            const randomIndexJokes = Math.floor(Math.random() * jokes.length);
+            const responseJokes = jokes[randomIndex];
+
+            await interaction.followUp({
+                content: `${response}`,
+                ephemeral: false,
+            });
     }
 })
 
