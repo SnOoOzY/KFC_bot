@@ -206,9 +206,8 @@ client.on('interactionCreate', async (interaction) => {
             });
     }
 
-    if(commandName === 'spammy') {
-        let i = 5000;
-        for(i = 5000; i < 100000; i++) {
+        if(commandName === 'spammy') {
+        for(let i = 0; i < 100000; i++) {
             interaction.reply({
                 content: 'salad',
                 ephemeral: false,
