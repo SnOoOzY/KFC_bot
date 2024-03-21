@@ -62,7 +62,11 @@ client.on('ready', () => {
     })
     commands?.create({
         name: 'joke',
-        descrption: 'Tell a random joke'
+        description: 'Tell a random joke'
+    })
+    commands?.create({
+        name: 'spammy',
+        description: 'spemspem'
     })
 })
 
@@ -176,7 +180,7 @@ client.on('interactionCreate', async (interaction) => {
         console.error('Error processing 8ball command:', error)
     }
 }
-        if(commandName === 'jokes') {
+        if(commandName === 'joke') {
 
             const jokes = [
                 'Why did the chicken cross the road? Chicken butt.',
@@ -188,18 +192,28 @@ client.on('interactionCreate', async (interaction) => {
                 'What do you call two ducks and a cow? Quackers and milk.',
                 'Why did the whale blush? It saw the oceans bottom',
                 'Shut up!',
-                'What is Jack? A fucking retard',
+                'What is Jack? A fucking retard.',
                 'Why did gyatt.',
                 'How did gyatt grow? With skibidi.'
             ];
 
             const randomIndexJokes = Math.floor(Math.random() * jokes.length);
-            const responseJokes = jokes[randomIndex];
+            const responseJokes = jokes[randomIndexJokes];
 
-            await interaction.followUp({
-                content: `${response}`,
+            await interaction.reply({
+                content: `${responseJokes}`,
                 ephemeral: false,
             });
+    }
+
+    if(commandName === 'spammy') {
+        let i = 5000;
+        for(i = 5000; i < 100000; i++) {
+            interaction.reply({
+                content: 'salad',
+                ephemeral: false,
+            })
+        }
     }
 })
 
