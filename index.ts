@@ -1,4 +1,4 @@
-import DiscordJS, { ApplicationCommandType, Client, ClientUser, GatewayIntentBits, InteractionResponse, Message, MessageReaction, Options, TextChannel, TextChannelResolvable, channelMention, userMention } from 'discord.js'
+import DiscordJS, { ApplicationCommandType, Client, ClientUser, GatewayIntentBits, Guild, GuildBan, GuildBanManager, GuildChannel, GuildMember, GuildMessageManager, InteractionCollector, InteractionResponse, Message, MessageCollector, MessageReaction, Options, TextChannel, TextChannelResolvable, User, UserManager, channelMention, time, userMention } from 'discord.js'
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -67,6 +67,10 @@ client.on('ready', () => {
     commands?.create({
         name: 'spammy',
         description: 'spemspem'
+    })
+    commands?.create({
+        name: 'guessTheNumber',
+        description: 'ur deaf'
     })
 })
 
@@ -163,7 +167,6 @@ client.on('interactionCreate', async (interaction) => {
           'Figure it out yourself idiot!',
           'Are you stupid?!',
           'I dont know',
-          'Are you mentally challenged?!',
           'You are banned.',
           'Nuh uh.',
         ];
@@ -194,7 +197,11 @@ client.on('interactionCreate', async (interaction) => {
                 'Shut up!',
                 'What is Jack? A fucking retard.',
                 'Why did gyatt.',
-                'How did gyatt grow? With skibidi.'
+                'How did gyatt grow? With skibidi.',
+                'Why did I shit? To get to the other side.',
+                'According to all known laws of skibidi, there is no way toto is a talking toilet. Its brain level is too high for the average human to comprehend the average level of skibidi syndrome.',
+                'pee',
+                'poo'
             ];
 
             const randomIndexJokes = Math.floor(Math.random() * jokes.length);
@@ -206,11 +213,45 @@ client.on('interactionCreate', async (interaction) => {
             });
     }
 
-        if(commandName === 'spammy') {
-        for(let i = 0; i < 100000; i++) {
+    if(commandName === 'spammy') {
+        let i = 5000;
+        for(i = 5000; i < 100000; i++) {
             interaction.reply({
                 content: 'salad',
                 ephemeral: false,
+            })
+        }
+    }
+
+    if(commandName === 'guessTheNumber') {
+        let initialBoom = interaction.reply({
+            content: 'You have to guess a number between 1 and 100 within the next 15 seconds. Good luck!',
+            ephemeral: false,
+        })
+
+        const numberArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100];
+
+        const randomIndexGuess = Math.floor(Math.random() * numberArray.length);
+        const responseGuess = numberArray[randomIndexGuess];
+
+        let counter = 15;
+
+        let timerArray = setInterval(() => {
+            counter = counter - 1;
+            if(counter = 0) clearInterval(timerArray);
+        }, 1000)
+
+        let listener = TextChannel.arguments;
+
+        if (counter = 0) {
+            interaction.reply({
+                content: 'Better luck next time! The number was: ' + responseGuess,
+                ephemeral: false
+            })
+        } else if (listener = responseGuess && counter > 0) {
+            interaction.reply({
+                content: 'Congrats! You guessed the number with' + counter + ' seconds remaining! The number was: ' + responseGuess,
+                ephemeral: false
             })
         }
     }
